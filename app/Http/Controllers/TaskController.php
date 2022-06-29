@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Task;
+;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
@@ -14,8 +16,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
-        $task = Task::orderBy('id')->get();
+        $task = Task::where('user_id', '=', $this->getIdUserAuth())->orderBy('id')->get();
 
         return $task;
     }
@@ -39,9 +40,12 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         //
+        // $this->getIdUserAuth();
+
         $task = new Task;
         $task->nome = $request->nome;
         $task->data_conclusao = $request->data_conclusao;
+        $task->user_id = $this->getIdUserAuth();
         $task->status = false;
         if($task->save()){
             return response()->json(["sucess" => "Tarefa criada com sucesso"]);
@@ -118,4 +122,9 @@ class TaskController extends Controller
         
         return $task; 
     }
+
+    private function getIdUserAuth()
+    {
+        return Auth()->id();
+    } 
 }

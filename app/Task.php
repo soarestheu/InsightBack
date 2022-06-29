@@ -12,4 +12,7 @@ class Task extends Model
         'nome', 'data_conclusao', 'status',
     ];
 
+    public function user() {
+        return $this->belongsTo("App\User");
+    }
 }
