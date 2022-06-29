@@ -17,7 +17,12 @@ $ php artisan db:seed #para gerar os seeders, dados de teste
 $ php artisan serve
 ```
 Acesssar pela url: http://localhost:8000/api/base
-    
+
+## Credemcial inicial de login
+
+- E-mail: contato@teste.com
+- Password: 123123
+
 ## Configuração inicial
 
 Altere as seguintes constantes dentro do .env no projeto:
