@@ -52,7 +52,7 @@
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
             "@php artisan migrate --force",
-            "@php artisan db:seed --force",
+
             "cp .env.example .env"
         ],
         "post-root-package-install": [
