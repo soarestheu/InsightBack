@@ -99,7 +99,7 @@ class UserController extends Controller
     {
         //
         $user = User::find($id);
-
+        // $user->tasks->delete();
         if( $user->delete() ) {
             $MailService = new \App\Service\MailService(
                 "Usuário deletado com Sucesso!", 
